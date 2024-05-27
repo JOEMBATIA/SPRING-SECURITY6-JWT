@@ -1,5 +1,6 @@
 package com.joe.springsec6demo.controller;
 
+import org.springframework.security.access.annotation.Secured;
 import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.*;
 
@@ -9,19 +10,19 @@ import org.springframework.web.bind.annotation.*;
 public class AdminController {
 
     @GetMapping
-    @PreAuthorize("hasRole('admin:read'")
+    @Secured("admin:get")
     public String getAdmin(){
         return "SECURED GET :: Role -> ADMIN";
     }
 
     @PostMapping
-    @PreAuthorize("hasRole('admin:create'")
+    @Secured("admin:post")
     public String createAdmin(){
         return "SECURED POST :: Role -> ADMIN";
     }
 
     @PutMapping
-    @PreAuthorize("hasRole('admin:update'")
+    @Secured("admin:update")
     public String updateAdmin(){
         return "SECURED UPDATE :: Role -> ADMIN";
     }
